@@ -76,7 +76,7 @@ Player = function()
 	    var bestDistance = 200;
 	    for (var i in level.objects) {
 	        var object = level.objects[i];
-	        var distance = Helpers.distanceToPlayer(object);
+	        var distance = Helpers.getPlayerDistance(object);
 	        if (distance < bestDistance) {
 	            bestObject = object;
 	            bestDistance = distance;

@@ -12,11 +12,10 @@ var Level = function(id) {
     this.objects = [];
     for (var i in this.state.objects) {
         var state = this.state.objects[i];
-        try {
+        if (Level[state.type])
             this.objects.push(new Level[state.type](this, state));
-        } catch (e) {
+        else
             console.warn(state.type + ' not implemented');
-        }
     }
     
 };
