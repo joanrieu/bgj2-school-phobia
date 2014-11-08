@@ -4,6 +4,12 @@ Player = function()
 	this.lastDirection = 'Down';
 	level.onUpdate.add(function()
 	{ 
+
+		if(input.spacebar.isDown && this.target && this.target.interact)
+		    this.target.interact();
+		
+		this.updateTarget();
+		
 		var x = input.cursors.right.isDown - input.cursors.left.isDown;
         var y = input.cursors.down.isDown - input.cursors.up.isDown;
 		if (x && y) {
@@ -19,11 +25,6 @@ Player = function()
 		else
 		{
 			this.sprite.animations.play(this.lastDirection, 1, true);
-		}
-
-		if(input.spacebar.isDown)
-		{
-			if(this.target && this.target.interact){this.target.interact()};
 		}
 
 		if(!this.cancelMove)
@@ -69,4 +70,18 @@ Player = function()
 		this.sprite.animations.add('Up',[14]);
 		game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
 	};
-}
+	
+	this.updateTarget = function() {
+	    var bestObject;
+	    var bestDistance = 200;
+	    for (var i in level.objects) {
+	        var object = level.objects[i];
+	        var distance = Helpers.distanceToPlayer(object);
+	        if (distance < bestDistance) {
+	            bestObject = object;
+	            bestDistance = distance;
+	        }
+	    }
+	    this.target = bestObject;
+	};
+};

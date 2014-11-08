@@ -9,13 +9,13 @@ var Level = function(id) {
     this.onGameOver = new Phaser.Signal();
     
     this.state = LEVELS[id];
-    
+    this.objects = [];
     for (var i in this.state.objects) {
-        var o = this.state.objects[i];
+        var state = this.state.objects[i];
         try {
-            new Level[o.type](this, o);
+            this.objects.push(new Level[state.type](this, state));
         } catch (e) {
-            console.warn(o.type + ' not implemented');
+            console.warn(state.type + ' not implemented');
         }
     }
     
