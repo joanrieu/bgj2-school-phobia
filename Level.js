@@ -5,11 +5,6 @@ var Level = function(id) {
     this.onPrePlayerMove = new Phaser.Signal();
     this.onPlayerMove = new Phaser.Signal();
     this.onLevelChange = new Phaser.Signal();
-    this.onPlayerAction = new Phaser.Signal();
-    this.onObjectPick = new Phaser.Signal();
-    this.onObjectDrag = new Phaser.Signal();
-    this.onObjectMuahaha = new Phaser.Signal();
-    this.onPlayerHurt = new Phaser.Signal();
     this.onUpdate = new Phaser.Signal();
     this.onGameOver = new Phaser.Signal();
     
@@ -19,7 +14,7 @@ var Level = function(id) {
         var o = this.state.objects[i];
         try {
             new Level[o.type](this, o);
-        } catch(e) {
+        } catch (e) {
             console.warn(o.type + ' not implemented');
         }
     }
