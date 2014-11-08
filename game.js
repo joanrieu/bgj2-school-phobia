@@ -37,15 +37,29 @@ game.state.add('level1',
                         console.log("coucou");
     },
     create: function() {
+            g.player.bmd = game.make.bitmapData();
+
+    g.player.bmd.load('girl');
+
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        g.player.sprite = game.add.sprite(0, 0, 'girl');
+        g.player.sprite = game.add.sprite(0, 0, g.player.bmd);
         game.physics.enable(g.player.sprite, Phaser.Physics.ARCADE);
         g.cursors = game.input.keyboard.createCursorKeys();
         music = game.add.audio('gameAudio',1,true);
         music.play('',1,true);
+
+
+//    g.player.bmd.addToWorld(game.world.centerX, game.world.centerY, 0, 0, 0, 0);
+
+    game.stage.smoothed = false;
+  
+//g.player.bmd.shiftHSL(0, -0.4 , -0.2);
+  
     },
     update: function() {
         g.player.sprite.body.velocity.x = (g.cursors.right.isDown - g.cursors.left.isDown) * g.player.speed;
         g.player.sprite.body.velocity.y = (g.cursors.down.isDown - g.cursors.up.isDown) * g.player.speed;
+        
     }
+
     });
