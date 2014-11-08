@@ -1,4 +1,18 @@
 var game = new Phaser.Game(800, 450);
+var level;
+
+game.state.add('test', {
+    preload: function() {
+        level = new Level(1);
+        level.onLevelStart_preload.dispatch();
+    },
+    create: function() {
+        level.onLevelStart_create.dispatch();
+    }
+}, true);
+
+// BORDEL BELOW :D -------------------------------------------------------------
+
 var g = {
     player: {
         speed: 150
@@ -23,14 +37,14 @@ game.state.add('menu', {
     },
     update: function() {
         if (g.keys.enter.isDown || g.keys.spacebar.isDown) {
-            game.state.start('level1')
-        };
+            game.state.start('level1');
+        }
     },
     shutdown: function() {
         g.music.destroy();
     }
 
-}, true);
+});
 game.state.add('level1', {
     preload: function() {
         game.load.image('girl_down', 'assets/sprites/girl_down.png');
