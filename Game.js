@@ -8,6 +8,9 @@ game.state.add('test', {
     },
     create: function() {
         level.onLevelStart_create.dispatch();
+    },
+    update: function() {
+        level.onUpdate.dispatch();
     }
 }, true);
 
