@@ -26,9 +26,10 @@ var Helpers = {
                 this.glow = 'on';
                 this.bmd.shiftHSL(H, S, L);
             }
-        } else if (this.glowTimer !== undefined) {
+        } else if (this.glow !== undefined) {
             if (this.glow === 'on')
                 this.bmd.shiftHSL(-H, -S, -L);
+            delete this.glow;
             delete this.glowTimer;
         }
     },
@@ -54,12 +55,6 @@ var Helpers = {
             object.state.position.x,
             object.state.position.y
         );
-    },
-    
-    onUpdateGlow: function() {
-        if (this.glow) {
-            //this.bmd.shiftHSL(0, 0.1, 0.05);
-        }
     }
     
 };
