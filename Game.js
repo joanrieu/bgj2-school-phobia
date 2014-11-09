@@ -6,7 +6,7 @@ var music;
 
 game.state.add('game', {
     preload: function() {
-        game.physics.startSystem(Phaser.Physics.ARCADE);
+          game.physics.startSystem(Phaser.Physics.ARCADE);
         level = new Level();
         player = new Player();
         player.preload();
@@ -20,7 +20,7 @@ game.state.add('game', {
         music.play('', 1, true);
         game.camera.follow(player.sprite);
         game.camera.deadzone = new Phaser.Rectangle(player.sprite.body.width, 0, 800 - 3*player.sprite.body.width, 450);
-        game.physics.arcade.setBoundsToWorld(0,0,game.width,game.height);
+        //game.physics.arcade.setBoundsToWorld(0,0,game.width,game.height);
     },
     update: function() {
         level.onUpdate.dispatch();
@@ -38,9 +38,12 @@ game.state.add('game', {
     }
 });
 
+var titlesprite;
 game.state.add('title', {
+
     preload: function() {
         game.load.audio('titleAudio', ['assets/audio/title.mp3', 'assets/audio/title.ogg']);
+        game.load.spritesheet('title','assets/sprites/title.png',   500,500);
     },
     create: function() {
         input = {
@@ -49,12 +52,17 @@ game.state.add('title', {
             cursors: game.input.keyboard.createCursorKeys()
             //add numbers for inventory?
         };
-         music = game.add.audio('titleAudio', 1, true);
-         music.play('', 1, true);
+
+        titlesprite = game.add.sprite(game.width/2 -250,0, 'title');
+        titlesprite.animations.add('girl',[0,1,2,3,4,5,6,7,8]);
+        titlesprite.animations.play('girl', 2, false);
+        music = game.add.audio('titleAudio', 1, true);
+        music.play('', 1, true);
     },
     update: function() {
         if(input.enter.isDown || input.spacebar.isDown)
-            game.state.start('game');
+            {game.state.start('game');}
+
     },
     shutdown: function() {
         music.destroy();

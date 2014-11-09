@@ -5,7 +5,7 @@ Level.Background = function(level, state) {
     this.level = level;
     this.state = state;
     this.spriteName = state.nameFile;
-    
+    this.small = true;
     game.world.setBounds(0, 0, 1600, 450);
 
     level.onLevelStart_preload.add(Helpers.doLoadImage, this);

@@ -2,13 +2,15 @@ Player = function()
 {
 	this.speed = 400;
 	this.lastDirection = 'Down';
+	this.hasKey = false;
+
 	level.onUpdate.add(function()
 	{ 
+		this.updateTarget();
 
 		if(input.spacebar.isDown && this.target && this.target.interact)
 		    this.target.interact();
 		
-		this.updateTarget();
 		
 		var x = input.cursors.right.isDown - input.cursors.left.isDown;
         var y = input.cursors.down.isDown - input.cursors.up.isDown;

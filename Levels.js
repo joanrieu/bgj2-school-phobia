@@ -337,26 +337,22 @@ var LEVELS = [{
             },
         },
         objects: [
- {
-            type: 'Door',
+          {
+            type: 'Background',
             position: {
-                x: 500,
-                y: 300
+                x: 0,
+                y: 0
             },
-            destination: 4
+            nameFile: 'room2',
         },
         {
-                type: 'Door',
-                position: {
-                    x: 37,
-                    y: -46
-                }
-            }, {
+
                 type: 'Door',
                 position: {
                     x: 1467,
                     y: -46
-                }
+                },
+                            destination: 4
             }, {
                 type: 'Board',
                 position: {
@@ -502,14 +498,7 @@ var LEVELS = [{
                     y: 68
                 }
             },
-        {
-            type: 'Background',
-            position: {
-                x: 0,
-                y: 0
-            },
-            nameFile: 'room2',
-        },]
+]
     }, {
         id: 3, //toilet
         player: {
@@ -527,7 +516,7 @@ var LEVELS = [{
                     x: 0,
                     y: 0
                 },
-                nameFile: 'toilet',
+                nameFile: 'room3',
             },
              {
                 type: 'Text',
@@ -547,7 +536,15 @@ var LEVELS = [{
                     x: 15,
                     y: 59
                 }
-            }, {
+            },
+{
+                type: 'Toilet',
+                position: {
+                    x: 250,
+                    y: -50
+                }
+            },
+             {
                 type: 'WaterPuddle',
                 position: {
                     x: 656,
@@ -572,13 +569,7 @@ var LEVELS = [{
                     y: 260
                 }
             }, 
-            {
-            type: 'Shadow',
-            position: {
-                x: 1200,
-                y: 307
-            }
-        },
+
         ]
     }, {
         id: 4, //hall1
@@ -603,11 +594,27 @@ var LEVELS = [{
 {
             type: 'Background',
             position: {
-                x: 0,
+                x: 0,   
                 y: 0
             },   nameFile: 'hall1',
         },
         {
+
+                type: 'Door',
+                position: { x:1413,y:-46},
+                destination: 1
+                },{
+                
+                type: 'Door',
+                position: { x:      2943,y:-46},destination: 3},{
+                type: 'Door',
+                position: { x:      3372,y:-46},destination: 5},
+  {
+                type: 'Door',
+                position: { x:87,y:-46},
+                closed : true,
+            destination: 8},
+{
             type: 'Door',
             position: {
                 x: 1413,
@@ -617,7 +624,7 @@ var LEVELS = [{
         },  {
             type: 'DoorHidden',
             position: {
-                x: 920,
+                x: 930,
                 y: 400
             },
             destination:2
@@ -932,27 +939,34 @@ var LEVELS = [{
         id: 8, //entrance
         player: {
             position: {
-                1: {
+                4: {
                     x: 500,
                     y: 250
                 }
             },
         },
-        objects: [{
-            type: 'Door',
-            position: {
-                x: 500,
-                y: 300
-            },
-            destination: 1
-        }, {
+        objects: [
+        {
             type: 'Background',
             position: {
                 x: 0,
                 y: 0
             },
             nameFile: 'entrance',
-        }, ]
+        },{
+            type: 'Door',
+            position: {
+                x: 500,
+                y: 300
+            },
+            destination: 4
+        },
+        {type: 'EndDoor',
+            position: {
+                x: 500,
+                y: 300
+            },
+        },  ]
     }
 
 ];

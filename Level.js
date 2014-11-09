@@ -26,16 +26,17 @@ var Level = function() {
     
     this.onLevelStart_create.add(function() {
         var overlay = new Phaser.Graphics(game, 0, 0);
-        overlay.beginFill(0x000000, 0.8);
-        overlay.drawRect(0, 0, game.width, game.height);
+        overlay.beginFill(0x000000, 0.6);
+        overlay.drawRect(0, 0, game.width + 100, game.height);
         overlay.endFill();
         this.overlay = game.add.image(0, 0, overlay.generateTexture());
+        this.onUpdate.add(function () {
+            this.overlay.position.x = game.camera.position.x - game.width/2 - 50;
+        },this);
     }, this, -1);
-    this.onUpdate.add(function () {
-        //this.overlay.position.x = game.camera.position.x;
-    });
     this.onLevelChange.add(function(i) {
+        this.onUpdate.removeAll();
        game.state.start('game');
-    });
+    },this);
     
 };

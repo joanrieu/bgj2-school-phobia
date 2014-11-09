@@ -26,4 +26,8 @@ Level.DefaultFurniture.TYPES = [
     'Closet',
     'Table',
     'BookCase',
+    'Box',
+    'Toilet',
+    'Sink',
+    'Drawers'
 ];
