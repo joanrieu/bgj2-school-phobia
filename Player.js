@@ -1,6 +1,6 @@
 Player = function()
 {
-	this.speed = 150;
+	this.speed = 400;
 	this.lastDirection = 'Down';
 	level.onUpdate.add(function()
 	{ 
@@ -53,7 +53,7 @@ Player = function()
 
 	};
 	this.create = function() {
-		this.sprite = game.add.sprite(level.state.player.position.x, level.state.player.position.y, 'walk');
+		this.sprite = game.add.sprite(level.state.player.position[level.previousLevel].x, level.state.player.position[level.previousLevel].y, 'walk');
 		this.sprite.animations.add('Dwalk',[0,2]);
 		this.sprite.animations.add('Lwalk',[4,3,5,6,3,7]);
 		this.sprite.animations.add('Rwalk',[8,12,9,10,12,11]);

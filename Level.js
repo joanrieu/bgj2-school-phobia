@@ -1,4 +1,4 @@
-var Level = function(id) {
+var Level = function() {
     
     this.onLevelStart_preload = new Phaser.Signal();
     this.onLevelStart_create = new Phaser.Signal();
@@ -8,7 +8,8 @@ var Level = function(id) {
     this.onRender = new Phaser.Signal();
     this.onGameOver = new Phaser.Signal();
     
-    this.state = LEVELS[id];
+    this.state = LEVELS[player ? player.target.state.destination : 1];
+    this.previousLevel = level ? level.state.id : 0;
     this.objects = [];
     for (var i in this.state.objects) {
         var state = this.state.objects[i];
@@ -30,5 +31,11 @@ var Level = function(id) {
         overlay.endFill();
         this.overlay = game.add.image(0, 0, overlay.generateTexture());
     }, this, -1);
+    this.onUpdate.add(function () {
+        //this.overlay.position.x = game.camera.position.x;
+    });
+    this.onLevelChange.add(function(i) {
+       game.state.start('game');
+    });
     
 };

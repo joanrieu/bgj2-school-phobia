@@ -17,5 +17,8 @@ Level.DefaultSmallFurniture.TYPES = [
     'Drawings',
     'PencilCase',
     'Phone',
+    'SetSquare',
     'Window',
+    'Mirror','Sink','Box','WaterPuddle','Bucket','Shelf','Key',
+
 ];

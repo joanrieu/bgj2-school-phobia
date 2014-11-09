@@ -7,7 +7,7 @@ var music;
 game.state.add('game', {
     preload: function() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        level = new Level(1);
+        level = new Level();
         player = new Player();
         player.preload();
         level.onLevelStart_preload.dispatch();
@@ -20,6 +20,7 @@ game.state.add('game', {
         music.play('', 1, true);
         game.camera.follow(player.sprite);
         game.camera.deadzone = new Phaser.Rectangle(player.sprite.body.width, 0, 800 - 3*player.sprite.body.width, 450);
+        game.physics.arcade.setBoundsToWorld(0,0,game.width,game.height);
     },
     update: function() {
         level.onUpdate.dispatch();

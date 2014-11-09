@@ -1,16 +1,12 @@
-Level.Door = function(level, state) {
+Level.Table = function(level, state) {
     
     this.level = level;
     this.state = state;
-    this.spriteName = 'door';
+    this.spriteName = 'table';
     
     level.onLevelStart_preload.add(Helpers.doLoadImage, this);
     level.onLevelStart_create.add(Helpers.doCreateSprite, this);
     level.onUpdate.add(Helpers.doGlow, this);
-    // level.onLevelChange.add(Helpers.doSavePosition, this);
-    
-    this.interact = function() {
-        level.onLevelChange.dispatch(state.destination);
-    };
+//    level.onLevelChange.add(Helpers.doSavePosition, this);
     
 };

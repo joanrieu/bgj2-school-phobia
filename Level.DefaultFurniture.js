@@ -25,4 +25,5 @@ Level.DefaultFurniture.TYPES = [
     'ChairL',
     'Closet',
     'Table',
+    'BookCase',
 ];

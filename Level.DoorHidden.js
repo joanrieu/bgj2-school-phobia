@@ -1,8 +1,8 @@
-Level.Door = function(level, state) {
+Level.DoorHidden = function(level, state) {
     
     this.level = level;
     this.state = state;
-    this.spriteName = 'door';
+    this.spriteName = 'doorhidden';
     
     level.onLevelStart_preload.add(Helpers.doLoadImage, this);
     level.onLevelStart_create.add(Helpers.doCreateSprite, this);

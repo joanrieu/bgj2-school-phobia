@@ -52,12 +52,14 @@ var Helpers = {
     },
     
     getPlayerDistance: function(object) {
-        return Phaser.Math.distance(
+if(object.sprite){        return Phaser.Math.distance(
             player.sprite.body.position.x,
             player.sprite.body.position.y,
             object.sprite.position.x,
             object.sprite.position.y
-        );
-    }
+        );}
+    else
+        {console.log(object);return 1/0;}
+    },
     
 };
