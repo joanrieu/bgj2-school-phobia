@@ -8,7 +8,10 @@ var Helpers = {
             this.state.position.y,
             this.bmd
         );
-        game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+        if (!this.small) {
+            game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+            this.sprite.body.immovable = true;
+        }
     },
     
     doGlow: function() {

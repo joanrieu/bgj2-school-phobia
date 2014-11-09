@@ -17,9 +17,6 @@ Player = function()
 	    	y /= 1.4;
 	    }
 
-		this.cancelMove = false;
-		level.onPrePlayerMove.dispatch(this.sprite.position.x +  x*this.speed*game.time.elapsed/1000,
-												this.sprite.position.y +  y*this.speed*game.time.elapsed/1000);
 		if (x || y){level.onPlayerMove.dispatch(this.sprite.position.x +  x*this.speed*game.time.elapsed/1000,
 												this.sprite.position.y +  y*this.speed*game.time.elapsed/1000);
 		}
@@ -28,31 +25,28 @@ Player = function()
 			this.sprite.animations.play(this.lastDirection, 1, true);
 		}
 
-		if(!this.cancelMove)
-		{
+        this.sprite.body.velocity.x = x * this.speed;
+        this.sprite.body.velocity.y = y * this.speed;
 
+        game.physics.arcade.collide(this.sprite, game.world);
+        
+        if (x == -1 && (this.sprite.animations.currentAnim || {}).name != 'Lwalk') {
+        	this.sprite.animations.play('Lwalk', 5, true);
+        	this.lastDirection='Left';
+        }
+        if (x == 1 && (this.sprite.animations.currentAnim || {}).name != 'Rwalk') {
+        	this.sprite.animations.play('Rwalk', 5, true);
+        	this.lastDirection='Right';
+        }
+        if (y == 1 && (this.sprite.animations.currentAnim || {}).name != 'Dwalk') {
+        	this.sprite.animations.play('Dwalk', 3, true);
+        	this.lastDirection='Down';
+        }
+        if (y == -1 && (this.sprite.animations.currentAnim || {}).name != 'Uwalk') {
+        	this.sprite.animations.play('Uwalk', 3, true);
+        	this.lastDirection='Up';
+        }
 
-	        this.sprite.body.velocity.x = x * this.speed;
-	        this.sprite.body.velocity.y = y * this.speed;
-
-	        
-	        if (x == -1 && (this.sprite.animations.currentAnim || {}).name != 'Lwalk') {
-	        	this.sprite.animations.play('Lwalk', 5, true);
-	        	this.lastDirection='Left';
-	        }
-	        if (x == 1 && (this.sprite.animations.currentAnim || {}).name != 'Rwalk') {
-	        	this.sprite.animations.play('Rwalk', 5, true);
-	        	this.lastDirection='Right';
-	        }
-	        if (y == 1 && (this.sprite.animations.currentAnim || {}).name != 'Dwalk') {
-	        	this.sprite.animations.play('Dwalk', 3, true);
-	        	this.lastDirection='Down';
-	        }
-	        if (y == -1 && (this.sprite.animations.currentAnim || {}).name != 'Uwalk') {
-	        	this.sprite.animations.play('Uwalk', 3, true);
-	        	this.lastDirection='Up';
-	        }
- 	   }
 	},this);
 	this.preload = function() {
 		game.load.spritesheet('walk','assets/sprites/girl.png',170,300);
