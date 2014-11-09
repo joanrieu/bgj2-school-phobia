@@ -686,7 +686,7 @@ var LEVELS = [{
                 y: 45
             }
         }, {
-            type: 'Drawings',
+            type: 'Drawings2',
             position: {
                 x: 2519,
                 y: 17
