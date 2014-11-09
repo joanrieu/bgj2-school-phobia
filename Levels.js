@@ -5,8 +5,8 @@ var LEVELS = [{
         player: {
             position: {
                 0: {
-                    x: 10,
-                    y: 10
+                    x: 100,
+                    y: 150
                 },
                 4: {
                     x: 1330,
