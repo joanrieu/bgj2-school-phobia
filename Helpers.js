@@ -15,25 +15,20 @@ var Helpers = {
     },
     
     doGlow: function() {
-        var DELAY = 500, H = 0, S = 0.1, L = 0.05;
+        var DELAY = 500;
         if (player.target === this) {
-            if (!this.glowTimer)
-                this.glowTimer = 0;
-            if ((this.glowTimer += game.time.elapsed) > DELAY) {
-                this.glowTimer -= DELAY;
-                if (this.glow === 'on') {
-                    this.glow = 'off';
-                    this.bmd.shiftHSL(-H, -S, -L);
-                } else {
-                    this.glow = 'on';
-                    this.bmd.shiftHSL(H, S, L);
-                }
+            if (this.glowTween === undefined) {
+                this.glowByte = 0xFF;
+                this.glowTween = game.add.tween(this)
+                    .to({glowByte: 0xCC}, DELAY, Phaser.Easing.Quadratic.InOut, true)
+                    .to({glowByte: 0xFF}, DELAY, Phaser.Easing.Quadratic.InOut)
+                    .loop();
             }
-        } else if (this.glow !== undefined) {
-            if (this.glow === 'on')
-                this.bmd.shiftHSL(-H, -S, -L);
-            delete this.glow;
-            delete this.glowTimer;
+            this.sprite.tint = this.glowByte << 16 | this.glowByte << 8 | 0xFF;
+        } else if (this.glowTween !== undefined) {
+            this.sprite.tint = 0xFFFFFF;
+            delete this.glowTween;
+            delete this.glowByte;
         }
     },
     
