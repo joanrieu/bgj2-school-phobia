@@ -26,6 +26,14 @@ game.state.add('game', {
     },
     shutdown: function() {
         music.destroy();
+    },
+    render: function()
+    {
+        // game.debug.body(player.sprite);
+        // for (var i = 0; i < level.objects.length; i++) {
+        //     if(level.objects[i].state.type != 'ChairL')
+        //     game.debug.body(level.objects[i].sprite);
+        // };
     }
 });
 

@@ -63,6 +63,11 @@ Player = function()
 		this.sprite.animations.add('Right',[12]);
 		this.sprite.animations.add('Up',[14]);
 		game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
+		this.sprite.anchor.setTo(0.5,0.7);
+		this.sprite.position.x += this.sprite.body.width/2;
+		this.sprite.position.y += 0.7*this.sprite.body.height; 
+		this.sprite.body.width /= 3;
+		this.sprite.body.height /= 5;
 	};
 	
 	this.updateTarget = function() {
