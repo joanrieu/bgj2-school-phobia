@@ -1,7 +1,8 @@
 var game = new Phaser.Game(800, 450);
 var level;
 var player;
-var input ;
+var input;
+var music;
 game.state.add('game', {
     preload: function() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -18,17 +19,46 @@ game.state.add('game', {
     create: function() {
         level.onLevelStart_create.dispatch();
         player.create();
-        input =         {
+        music = game.add.audio('gameAudio', 1, true);
+        music.play('', 1, true);
+        game.camera.follow(player.sprite);
+        game.camera.deadzone = new Phaser.Rectangle(player.sprite.body.width, 0, 800 - 3*player.sprite.body.width, 450);
+
+
+    },
+    update: function() {
+        level.onUpdate.dispatch();
+    },
+    shutdown: function() {
+        music.destroy();
+    }
+});
+
+game.state.add('title', {
+    preload: function() {
+        game.load.audio('titleAudio', ['assets/audio/title.mp3', 'assets/audio/title.ogg']);
+    },
+    create: function() {
+        input = {
             enter: game.input.keyboard.addKey(Phaser.Keyboard.ENTER),
             spacebar: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
             cursors: game.input.keyboard.createCursorKeys()
             //add numbers for inventory?
         };
+         music = game.add.audio('titleAudio', 1, true);
+         music.play('', 1, true);
     },
-    update: function() {
-        level.onUpdate.dispatch();
-    }
-}, true);
+    shutdown:function() {
+        music.destroy();
+    },
+    update:function() {
+        if(input.enter.isDown || input.spacebar.isDown)
+        {
+            game.state.start('game')
+        }
+     }
+
+},true);
 
 // BORDEL BELOW :D -------------------------------------------------------------
 

@@ -18,13 +18,13 @@ var Helpers = {
                 this.glowTimer = 0;
             if ((this.glowTimer += game.time.elapsed) > DELAY) {
                 this.glowTimer -= DELAY;
-            }
-            if (this.glow === 'on') {
-                this.glow = 'off';
-                this.bmd.shiftHSL(-H, -S, -L);
-            } else {
-                this.glow = 'on';
-                this.bmd.shiftHSL(H, S, L);
+                if (this.glow === 'on') {
+                    this.glow = 'off';
+                    this.bmd.shiftHSL(-H, -S, -L);
+                } else {
+                    this.glow = 'on';
+                    this.bmd.shiftHSL(H, S, L);
+                }
             }
         } else if (this.glow !== undefined) {
             if (this.glow === 'on')

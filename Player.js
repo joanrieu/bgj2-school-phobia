@@ -18,9 +18,10 @@ Player = function()
 	    }
 
 		this.cancelMove = false;
-		level.onPrePlayerMove.dispatch()
-		if (x || y){level.onPlayerMove.dispatch(this.sprite.position.x +  x*this.speed,
-												this.sprite.position.y +  y*this.speed);
+		level.onPrePlayerMove.dispatch(this.sprite.position.x +  x*this.speed*game.time.elapsed/1000,
+												this.sprite.position.y +  y*this.speed*game.time.elapsed/1000);
+		if (x || y){level.onPlayerMove.dispatch(this.sprite.position.x +  x*this.speed*game.time.elapsed/1000,
+												this.sprite.position.y +  y*this.speed*game.time.elapsed/1000);
 		}
 		else
 		{
@@ -52,7 +53,6 @@ Player = function()
 	        	this.lastDirection='Up';
 	        }
  	   }
-
 	},this);
 	this.preload = function() {
 		game.load.spritesheet('walk','assets/sprites/girl.png',170,300);
