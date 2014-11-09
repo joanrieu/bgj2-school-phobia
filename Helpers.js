@@ -15,21 +15,23 @@ var Helpers = {
     },
     
     doGlow: function() {
-        var DELAY = 500;
-        if (player.target === this) {
-            if (this.glowTween === undefined) {
-                this.glowByte = 0xFF;
-                this.glowTween = game.add.tween(this)
-                    .to({glowByte: 0xCC}, DELAY, Phaser.Easing.Quadratic.InOut, true)
-                    .to({glowByte: 0xFF}, DELAY, Phaser.Easing.Quadratic.InOut)
-                    .loop();
-            }
-            this.sprite.tint = this.glowByte << 16 | this.glowByte << 8 | 0xFF;
-        } else if (this.glowTween !== undefined) {
-            this.sprite.tint = 0xFFFFFF;
+        if (player.target === this && !this.glowTween) {
+            console.log('go');
+            this.glowByte = 0xFF;
+            this.glowTween = game.add.tween(this)
+                .to({ glowByte: 0xCC }, 500, Phaser.Easing.Quadratic.InOut)
+                .to({ glowByte: 0xFF }, 500, Phaser.Easing.Quadratic.InOut)
+                .loop().start();
+        } else if (player.target !== this && this.glowTween) {
+            console.log('stop', this.glowTween);
+            this.glowTween.pause();
+            this.glowTween.stop();
             delete this.glowTween;
-            delete this.glowByte;
+            game.add.tween(this)
+                .to({glowByte: 0xFF}, 500, Phaser.Easing.Quadratic.InOut, true);
         }
+        if (this.glowByte !== undefined)
+            this.sprite.tint = this.glowByte << 16 | this.glowByte << 8 | 0xFF;
     },
     
     doLoadImage: function() {
