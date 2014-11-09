@@ -24,6 +24,8 @@ Level.DefaultSmallFurniture.TYPES = [
     'WaterPuddle',
     'Bucket',
     'Shelf',
-    'DeadHead'
+    'DeadHead',
+    'TV',
+    'Broom'
 
 ];

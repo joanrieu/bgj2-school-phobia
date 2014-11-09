@@ -31,7 +31,9 @@ Level.DefaultFurniture.TYPES = [
     'Sink',
     'Drawers',
     'Vase',
-    'CoatRail',
+    'RailCoat',
     'Clock',
-    'Armchair'
+    'ArmChair',
+    'Couch',
+    'Desk'
 ];
