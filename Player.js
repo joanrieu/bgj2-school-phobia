@@ -29,6 +29,15 @@ Player = function()
 
         this.sprite.body.velocity.x = x * this.speed;
         this.sprite.body.velocity.y = y * this.speed;
+		
+		if (x < 0 && this.sprite.position.x < this.sprite.body.width)
+		    this.sprite.body.velocity.x = 0;
+	    if (x > 0 && this.sprite.position.x > game.world.bounds.width - this.sprite.body.width)
+	        this.sprite.body.velocity.x = 0;
+        if (y < 0 && this.sprite.position.y < 200)
+            this.sprite.body.velocity.y = 0;
+        if (y > 0 && this.sprite.position.y > game.world.bounds.height - this.sprite.body.height / 2)
+            this.sprite.body.velocity.y = 0;
 
         game.physics.arcade.collide(this.sprite, game.world);
         
