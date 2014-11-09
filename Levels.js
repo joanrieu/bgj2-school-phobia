@@ -586,6 +586,14 @@ var LEVELS = [{
                 3: {
                     x:1465,
                     y: 194
+                },
+                5: {
+                    x:1465,
+                    y: 194
+                },
+                    8: {
+                    x:120,
+                    y: 194
                 }
 
             },
@@ -672,31 +680,38 @@ var LEVELS = [{
         id: 5, //hall2
         player: {
             position: {
-                1: {
+                4: {
                     x: 500,
                     y: 250
                 }
             },
         },
-        objects: [{
+        objects: [
+         {
+            type: 'Background',
+            position: {
+                x: 0,
+                y: 0
+            },
+            nameFile: 'hall2',
+        },{
             type: 'Door',
             position: {
                 x: 1394,
                 y: -46
-            }
+            },destination:6
         }, {
             type: 'Door',
             position: {
                 x: 2943,
                 y: -46
-            }
+            },destination:7
         }, {
             type: 'Door',
             position: {
                 x: 89,
                 y: -46
-            },
-            closed: true,
+            },destination:4,
         }, {
             type: 'CoatRail',
             position: {
@@ -721,13 +736,6 @@ var LEVELS = [{
                 x: 2519,
                 y: 17
             }
-        }, , {
-            type: 'Background',
-            position: {
-                x: 0,
-                y: 0
-            },
-            nameFile: 'hall2',
         }, ]
     }, {
         id: 6, //library
@@ -739,13 +747,21 @@ var LEVELS = [{
                 }
             },
         },
-        objects: [{
+        objects: [
+         {
+            type: 'Background',
+            position: {
+                x: 0,
+                y: 0
+            },
+            nameFile: 'library',
+        },{
             type: 'DoorHidden',
             position: {
                 x: 500,
                 y: 300
             },
-            destination: 1
+            destination: 5
         }, {
             type: 'BookCase',
             position: {
@@ -860,25 +876,26 @@ var LEVELS = [{
                 x: 1224,
                 y: 254
             }
-        }, {
-            type: 'Background',
-            position: {
-                x: 0,
-                y: 0
-            },
-            nameFile: 'library',
         }, ]
     }, {
         id: 7, //TeacherRoom
         player: {
             position: {
-                1: {
+                5: {
                     x: 500,
                     y: 250
                 }
             },
         },
-        objects: [{
+        objects: [
+         {
+            type: 'Background',
+            position: {
+                x: 0,
+                y: 0
+            },
+            nameFile: 'teacherRoom',
+        },{
             type: 'DoorHidden',
             position: {
                 x: 500,
@@ -927,13 +944,6 @@ var LEVELS = [{
                 x: 0,
                 y: 0
             }
-        }, {
-            type: 'Background',
-            position: {
-                x: 0,
-                y: 0
-            },
-            nameFile: 'teacherRoom',
         }, ]
     }, {
         id: 8, //entrance

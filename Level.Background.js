@@ -6,9 +6,11 @@ Level.Background = function(level, state) {
     this.state = state;
     this.spriteName = state.nameFile;
     this.small = true;
-    game.world.setBounds(0, 0, 1600, 450);
+    
 
     level.onLevelStart_preload.add(Helpers.doLoadImage, this);
     level.onLevelStart_create.add(Helpers.doCreateSprite, this);
-
+    level.onLevelStart_create.add(function() {
+        game.world.setBounds(0, 0, this.sprite.width, this.sprite.height);
+    }, this);
 };

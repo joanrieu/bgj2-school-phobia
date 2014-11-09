@@ -16,14 +16,12 @@ var Helpers = {
     
     doGlow: function() {
         if (player.target === this && !this.glowTween) {
-            console.log('go');
             this.glowByte = 0xFF;
             this.glowTween = game.add.tween(this)
-                .to({ glowByte: 0xCC }, 500, Phaser.Easing.Quadratic.InOut)
+                .to({ glowByte: 0x88 }, 500, Phaser.Easing.Quadratic.InOut)
                 .to({ glowByte: 0xFF }, 500, Phaser.Easing.Quadratic.InOut)
                 .loop().start();
         } else if (player.target !== this && this.glowTween) {
-            console.log('stop', this.glowTween);
             this.glowTween.pause();
             this.glowTween.stop();
             delete this.glowTween;
@@ -31,7 +29,7 @@ var Helpers = {
                 .to({glowByte: 0xFF}, 500, Phaser.Easing.Quadratic.InOut, true);
         }
         if (this.glowByte !== undefined)
-            this.sprite.tint = this.glowByte << 16 | this.glowByte << 8 | 0xFF;
+            this.sprite.tint = this.glowByte << 16 | this.glowByte << 8 | this.glowByte;
     },
     
     doLoadImage: function() {

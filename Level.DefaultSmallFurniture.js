@@ -7,7 +7,7 @@ Level.DefaultSmallFurniture = function(level, state) {
     
     level.onLevelStart_preload.add(Helpers.doLoadImage, this);
     level.onLevelStart_create.add(Helpers.doCreateSprite, this);
-    //level.onUpdate.add(Helpers.doGlow, this);
+    level.onUpdate.add(Helpers.doGlow, this);
     //level.onLevelChange.add(Helpers.doSavePosition, this);
     
 };
