@@ -1,8 +1,9 @@
+var hasKey = false;
 Player = function()
 {
 	this.speed = 400;
 	this.lastDirection = 'Down';
-	this.hasKey = false;
+	
 
 	level.onUpdate.add(function()
 	{ 

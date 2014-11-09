@@ -556,13 +556,22 @@ var LEVELS = [{
                     x: 705,
                     y: 273
                 }
+
             }, {
                 type: 'Box',
                 position: {
                     x: 156,
                     y: 314
                 }
-            }, {
+            },
+ {
+                type: 'Shadow',
+                position: {
+                    x: 656,
+                    y: 314
+                }
+            },
+             {
                 type: 'BigBox', //animation 4 frame 
                 position: {
                     x: 287,
@@ -576,7 +585,7 @@ var LEVELS = [{
         player: {
             position: {
                 1: {
-                    x: 120,
+                    x: 1470,
                     y: 194
                 },
                 2: {
@@ -588,7 +597,7 @@ var LEVELS = [{
                     y: 194
                 },
                 5: {
-                    x:1465,
+                    x:3400,
                     y: 194
                 },
                     8: {
@@ -632,7 +641,7 @@ var LEVELS = [{
         },  {
             type: 'DoorHidden',
             position: {
-                x: 930,
+                x: 920,
                 y: 400
             },
             destination:2
@@ -682,6 +691,14 @@ var LEVELS = [{
             position: {
                 4: {
                     x: 500,
+                    y: 120
+                },
+                7: {
+                    x: 2700,
+                    y: 250
+                },
+                6: {
+                    x: 1410,
                     y: 250
                 }
             },
@@ -741,7 +758,7 @@ var LEVELS = [{
         id: 6, //library
         player: {
             position: {
-                1: {
+                5: {
                     x: 500,
                     y: 250
                 }
@@ -858,7 +875,8 @@ var LEVELS = [{
                 x: 1333,
                 y: 272
             }
-        }, {
+        },
+        {
             type: 'Desk',
             position: {
                 x: 143,
@@ -901,19 +919,18 @@ var LEVELS = [{
                 x: 500,
                 y: 300
             },
-            destination: 1
+            destination: 5
         }, {
             type: 'Window',
             position: {
                 x: 45,
                 y: 0
             }
-        }, {
-            type: 'Window',
-            position: {
-                x: 283,
-                y: 99
-            }
+            }, 
+        {type: 'Key',
+        position:{x:600 , y: 200}
+
+
         }, {
             type: 'Couch',
             position: {

@@ -1,8 +1,8 @@
-Level.Door = function(level, state) {
+Level.Key = function(level, state) {
     
     this.level = level;
     this.state = state;
-    this.spriteName = 'door';
+    this.spriteName = 'key';
     
     level.onLevelStart_preload.add(Helpers.doLoadImage, this);
     level.onLevelStart_create.add(Helpers.doCreateSprite, this);
@@ -10,11 +10,8 @@ Level.Door = function(level, state) {
     // level.onLevelChange.add(Helpers.doSavePosition, this);
     
     this.interact = function() {
-        if(!state.closed || hasKey)
-        {
-            if(state.closed) { game.state.start('win');}
-            level.onLevelChange.dispatch(state.destination);
-        }
+        hasKey = true;
+        this.sprite.destroy();
     };
     
 };

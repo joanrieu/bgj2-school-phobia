@@ -68,3 +68,31 @@ game.state.add('title', {
         music.destroy();
     }
 }, true);
+
+
+var winsprite;
+game.state.add('win', {
+
+    preload: function() {
+        //game.load.audio('titleAudio', ['assets/audio/title.mp3', 'assets/audio/title.ogg']);
+        game.load.spritesheet('winning','assets/sprites/title.png',   500,500);
+    },
+    create: function() {
+        input = {
+            enter: game.input.keyboard.addKey(Phaser.Keyboard.ENTER),
+            spacebar: game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
+            cursors: game.input.keyboard.createCursorKeys()
+            //add numbers for inventory?
+        };
+
+        titlesprite = game.add.sprite(game.width/2 -250,0, 'title');
+        titlesprite.animations.add('girl',[0,1,2,3,4,]);
+        titlesprite.animations.play('girl', 2, true);
+        
+    },
+    update: function() {
+        if(input.enter.isDown || input.spacebar.isDown)
+            {game.state.start('game');}
+
+    },
+});
