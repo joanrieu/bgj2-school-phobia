@@ -55,8 +55,8 @@ var Helpers = {
         return Phaser.Math.distance(
             player.sprite.body.position.x,
             player.sprite.body.position.y,
-            object.sprite.body.position.x,
-            object.sprite.body.position.y
+            object.sprite.position.x,
+            object.sprite.position.y
         );
     }
     

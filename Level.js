@@ -12,14 +12,15 @@ var Level = function(id) {
     this.objects = [];
     for (var i in this.state.objects) {
         var state = this.state.objects[i];
+        var type = state.type;
         if (Level.DefaultFurniture.TYPES.indexOf(state.type) != -1)
-            ;
+            type = 'DefaultFurniture';
         else if (Level.DefaultSmallFurniture.TYPES.indexOf(state.type) != -1)
-            ;
-        else if (Level[state.type])
-            this.objects.push(new Level[state.type](this, state));
+            type = 'DefaultSmallFurniture';
+        if (Level[type])
+            this.objects.push(new Level[type](this, state));
         else
-            console.warn(state.type + ' not implemented');
+            console.warn(type + ' not implemented');
     }
     
     this.onLevelStart_create.add(function() {

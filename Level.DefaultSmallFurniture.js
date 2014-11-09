@@ -2,7 +2,7 @@ Level.DefaultSmallFurniture = function(level, state) {
     
     this.level = level;
     this.state = state;
-    this.spriteName = state.type.toLowercase();
+    this.spriteName = state.type.toLowerCase();
     this.small = true;
     
     level.onLevelStart_preload.add(Helpers.doLoadImage, this);
