@@ -6,6 +6,7 @@ var Level = function(id) {
     this.onPlayerMove = new Phaser.Signal();
     this.onLevelChange = new Phaser.Signal();
     this.onUpdate = new Phaser.Signal();
+    this.onRender = new Phaser.Signal();
     this.onGameOver = new Phaser.Signal();
     
     this.state = LEVELS[id];
@@ -17,6 +18,14 @@ var Level = function(id) {
         else
             console.warn(state.type + ' not implemented');
     }
+    
+    this.onLevelStart_create.add(function() {
+        var overlay = new Phaser.Graphics(game, 0, 0);
+        overlay.beginFill(0x000000, 0.8);
+        overlay.drawRect(0, 0, game.width, game.height);
+        overlay.endFill();
+        this.overlay = game.add.image(0, 0, overlay.generateTexture());
+    }, this, -1);
     
 };
 
