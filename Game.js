@@ -4,9 +4,14 @@ var player;
 var input;
 var music;
 
+var keysprite;
 game.state.add('game', {
     preload: function() {
-          game.physics.startSystem(Phaser.Physics.ARCADE);
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+        if (!level) {
+            keysprite = true;
+            game.load.image('keys', 'assets/sprites/keys.png');
+        }
         level = new Level();
         player = new Player();
         player.preload();
@@ -20,7 +25,10 @@ game.state.add('game', {
         music.play('', 1, true);
         game.camera.follow(player.sprite);
         game.camera.deadzone = new Phaser.Rectangle(player.sprite.body.width, 0, 800 - 3*player.sprite.body.width, 450);
-        //game.physics.arcade.setBoundsToWorld(0,0,game.width,game.height);
+        if (keysprite === true) {
+            keysprite = game.add.sprite(0, 0, 'keys');
+            game.add.tween(keysprite).delay(10000).to({ alpha: 0 }, 2000, Phaser.Easing.Quadratic.InOut, true);
+        }
     },
     update: function() {
         level.onUpdate.dispatch();
